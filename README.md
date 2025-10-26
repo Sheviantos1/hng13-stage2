@@ -1,21 +1,51 @@
-# HNGx Stage 2 DevOps Task – Blue/Green Deployment
+# HNGx Stage 2 — Blue-Green Deployment
 
-## 🚀 Overview
+This project demonstrates a blue-green deployment architecture using Docker Compose and NGINX. It runs two identical application containers (`blue` and `green`) and routes traffic based on the active pool defined in environment variables.
 
-This project sets up a Blue/Green deployment using Docker Compose and NGINX. Blue is the active app, Green is the backup. NGINX handles automatic failover and retries.
+## 🔧 Setup Instructions
 
-## 🧱 Stack
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Sheviantos1/hng13-stage2.git
+   cd hng13-stage2
 
-- Docker Compose
-- NGINX
-- Node.js (prebuilt images)
-- Bash templating
+Absolutely, Ademoye — let’s make your README.md and DECISION.md shine so your submission stands out. I’ll give you polished templates you can copy, tweak, and drop into your repo.
 
-## 📦 Setup
+📝 Polished README.md
+# HNGx Stage 2 — Blue-Green Deployment
 
-1. Clone the repo
-2. Create a `.env` file based on `.env.example`
-3. Run:
+This project demonstrates a blue-green deployment architecture using Docker Compose and NGINX. It runs two identical application containers (`blue` and `green`) and routes traffic based on the active pool defined in environment variables.
 
-```bash
+## 🔧 Setup Instructions
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Sheviantos1/hng13-stage2.git
+   cd hng13-stage2
+
+
+- Create your .env file:
+cp .env.example .env
+- Start the containers:
 docker-compose up -d
+
+
+- Access the app:
+- Main endpoint: http://localhost:8080
+- Blue service: http://localhost:8081
+- Green service: http://localhost:8082
+🔁 Failover Testing
+To simulate failure and test NGINX failover:
+curl http://localhost:8081/chaos/start
+
+
+Then access http://localhost:8080 again to confirm traffic reroutes to the backup pool.
+📦 Environment Variables
+Defined in .env.example:
+BLUE_IMAGE=yimikaade/wonderful:devops-stage-two
+GREEN_IMAGE=yimikaade/wonderful:devops-stage-two
+ACTIVE_POOL=blue
+RELEASE_ID_BLUE=blue-v1.0.0
+RELEASE_ID_GREEN=green-v1.0.0
+PORT=3000
+
