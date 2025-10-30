@@ -3,9 +3,9 @@ events { worker_connections 1024; }
 
 http {
   upstream backend {
-    server app_blue:8081 max_fails=1 fail_timeout=3s;
-    server app_green:8082 backup;
-  }
+    server app_blue:3000 max_fails=1 fail_timeout=3s;
+    server app_green:3000 backup;
+}
 
   server {
     listen 80;
